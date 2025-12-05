@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alizée Labonne - Editorial Portfolio</title>
+    <!-- Inclure la police de caractères (exemple : Google Fonts) pour un style moderne -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables CSS pour les couleurs du thème */
+        :root {
+            --color-terracotta: #B8735C; /* Orange terre cuite / Marron chaud */
+            --color-cream: #F5EFE6; /* Crème */
+            --color-dark-text: #333333; /* Texte foncé */
+            --color-light-text: #FFFFFF; /* Texte clair */
+            --color-accent: #E6A478; /* Orange plus clair pour l'accentuation */
+            --font-main: 'Montserrat', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+        }
+
+        /* Réinitialisation de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-dark-text);
+            background-color: var(--color-cream);
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Défilement fluide pour les liens d'ancrage */
+        }
+
+        /* En-tête de navigation */
+        .header {
+            background-color: var(--color-terracotta);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* NOUVEAU: Style pour la photo de profil dans la navigation */
+        .nav-profile-photo {
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--color-accent);
+            margin-right: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        /* FIN NOUVEAU */
+
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo a {
+            font-family: var(--font-heading);
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--color-light-text);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu ul li a {
+            color: var(--color-light-text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            margin-left: 10px;
+            display: block;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-menu ul li a:hover {
+            background-color: var(--color-accent); /* Effet de survol */
+            color: var(--color-dark-text);
+        }
+
+        /* Mise en page principale */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Styles de section */
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--color-terracotta);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--color-accent);
+            margin: 10px auto 0;
+        }
+
+        /* --- ABOUT ME --- */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .profile-photo {
+            /* NOTE: Assurez-vous que l'image 'Image pro Alizee.jpg' est dans le même répertoire */
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--color-accent);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            flex-grow: 1;
+        }
+
+        .about-text h1 {
+            font-family: var(--font-heading);
+            font-size: 3em;
+            color: var(--color-dark-text);
+            margin-bottom: 10px;
+        }
+
+        .about-text p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        /* NEW: Download Button Style for About Me section */
+        .download-btn {
+            display: inline-block;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            padding: 12px 25px;
+            background-color: var(--color-terracotta);
+            color: var(--color-light-text);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .download-btn:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-info a {
+            color: var(--color-terracotta);
+            text-decoration: none;
+            font-weight: 600;
+            margin-right: 20px;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--color-accent);
+        }
+
+        /* --- FORMATIONS & EXPERIENCES --- */
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: var(--color-cream);
+            border-left: 5px solid var(--color-terracotta);
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px); /* Effet de survol (légère élévation) */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-date {
+            min-width: 150px;
+            font-weight: 600;
+            color: var(--color-terracotta);
+        }
+
+        .timeline-details {
+            flex-grow: 1;
+        }
+        
+        .timeline-details h3 {
+            font-size: 1.4em;
+            margin-top: 0;
+            color: var(--color-dark-text);
+        }
+
+        .timeline-details p {
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .timeline-details ul {
+            margin-top: 10px;
+            margin-left: 20px;
+            list-style: disc;
+        }
+
+        /* --- PORTFOLIO --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--color-light-text);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05); /* Effet de survol (zoom léger) */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: auto; /* Permet à l'aspect-ratio de déterminer la hauteur */
+            aspect-ratio: 1 / 1; /* NOUVEAU : Force un ratio de 1:1 (carré) */
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h4 {
+            font-family: var(--font-heading);
+            color: var(--color-terracotta);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            margin-bottom: 15px; /* Espace après le paragraphe de description */
+        }
+
+        .project-info a {
+            display: inline-block;
+            margin-top: 5px; /* Réduit l'espace car on a plusieurs boutons */
+            margin-right: 5px;
+            margin-left: 5px;
+            padding: 8px 15px;
+            background-color: var(--color-accent);
+            color: var(--color-light-text);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            font-size: 0.9em; /* Texte plus petit pour les longs titres de boutons */
+            white-space: normal; /* Permet au texte du bouton de s'enrouler */
+            line-height: 1.3;
+        }
+
+        .project-info a:hover {
+            background-color: var(--color-terracotta);
+        }
+
+        /* Classe spécifique pour les cartes de portfolio avec la couleur accentuée */
+        .project-card.accented {
+            background-color: var(--color-light-text);
+        }
+
+        .project-card.accented .project-info h4 {
+            color: var(--color-terracotta);
+        }
+        
+        /* Classe pour les cartes de portfolio avec la couleur principale (Terre Cuite) */
+        .project-card.primary-color .project-image {
+            background-color: var(--color-terracotta);
+        }
+
+        /* Conteneur pour les boutons des articles de presse */
+        .article-buttons {
+            display: flex;
+            flex-direction: column; /* Empile les boutons */
+            align-items: center;
+            gap: 10px; /* Espace entre les boutons */
+            margin-top: 15px;
+        }
+
+        .article-buttons a {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px 15px;
+            font-size: 1em; /* Taille de police normale pour les titres d'articles */
+            box-sizing: border-box; /* Assure que le padding ne fait pas déborder le bouton */
+        }
+        
+        /* --- SKILLS & INTERESTS --- */
+        .skills-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .skills-category {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--color-light-text);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s;
+        }
+
+        .skills-category:hover {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills-category h4 {
+            font-family: var(--font-heading);
+            color: var(--color-terracotta);
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .skills-category ul {
+            list-style: none;
+        }
+
+        .skills-category ul li {
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--color-accent);
+        }
+
+        .skills-category ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Pied de page */
+        .footer {
+            background-color: var(--color-dark-text);
+            color: var(--color-cream);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+
+        /* Responsive Design pour les mobiles */
+        @media (max-width: 768px) {
+            .nav-menu ul {
+                display: none; /* Cache le menu principal sur mobile */
+            }
+
+            .nav-container {
+                justify-content: center;
+            }
+
+            .logo a {
+                font-size: 1.5em;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 0;
+            }
+
+            .profile-photo {
+                width: 180px;
+                height: 180px;
+                margin-bottom: 20px;
+            }
+            
+            .about-text h1 {
+                font-size: 2.5em;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                border-left: none;
+                border-top: 5px solid var(--color-terracotta);
+            }
+
+            .timeline-date {
+                margin-bottom: 10px;
+                min-width: auto;
+            }
+
+            .skills-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Barre de navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <!-- Image de profil dans la navigation (ajoutée) -->
+            <div class="logo">
+                <img src="Image pro Alizee.jpg" alt="Profile Photo" class="nav-profile-photo" onerror="this.onerror=null;this.src='https://placehold.co/40x40/E6A478/FFFFFF?text=A'">
+                <a href="#">Alizée Labonne</a>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#about-me">About Me</a></li>
+                    <li><a href="#education">Education & Training</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#portfolio">My Editorial Portfolio</a></li>
+                    <li><a href="#skills">Skills & Interests</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section: About Me -->
+        <section id="about-me" class="section container">
+            <div class="about-content">
+                <!-- Image source set to the uploaded file name -->
+                <img src="Image pro Alizee.jpg" alt="Professional portrait of Alizée Labonne" class="profile-photo" onerror="this.onerror=null;this.src='https://placehold.co/250x250/B8735C/F5EFE6?text=Alizée+Labonne'">
+                <div class="about-text">
+                    <h1>Hello! I am Alizée Labonne</h1>
+                    <p>
+                        Currently pursuing a Master's degree in Global Journalism and Communication at Assas / IFP and working as an apprentice at Sanofi. I possess solid experience in journalism, communications, and publishing. I'm a passionate and dedicated editorial professional keen for detail and a knack for compelling storytelling.
+                    </p>
+                    <p>
+                        I'm now looking for a full-time position starting in October 2026, in communication, marketing, journalism, or public relations.
+                    </p>
+                    
+                    <!-- NEW: Download CV Button -->
+                    <a href="CV ENG - Alizee Labonne oct25.pdf" download class="download-btn">Download My CV</a>
+                    
+                    <div class="contact-info">
+                        <a href="mailto:alizeework@gmail.com">alizeework@gmail.com</a>
+                        <a href="https://www.linkedin.com/in/alizée-labonne-1674b82a6" target="_blank">LinkedIn Profile</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Education & Training -->
+        <section id="education" class="section container">
+            <h2 class="section-title">Education & Training</h2>
+
+            <!-- Master's Degree -->
+            <div class="timeline-item">
+                <div class="timeline-date">Sept 2024 – June 2026</div>
+                <div class="timeline-details">
+                    <h3>MASTER'S DEGREE IN GLOBAL JOURNALISM AND COMMUNICATION</h3>
+                    <p>Paris II Panthéon Assas University, France</p>
+                </div>
+            </div>
+
+            <!-- Bachelor's Degree -->
+            <div class="timeline-item">
+                <div class="timeline-date">Sept 2021 – June 2024</div>
+                <div class="timeline-details">
+                    <h3>BACHELOR'S DEGREE IN LAW, ECONOMY, MANAGEMENT AND POLITICAL SCIENCE</h3>
+                    <p>Saint Quentin en Yvelines University, France</p>
+                </div>
+            </div>
+
+            <!-- INTERNATIONAL FRENCH BACCALAUREATE (OIB) - Ajouté -->
+            <div class="timeline-item">
+                <div class="timeline-date">Sept 2018 – June 2021</div>
+                <div class="timeline-details">
+                    <h3>INTERNATIONAL FRENCH BACCALAUREATE (OIB)</h3>
+                    <p>Lycée des Mascareignes, Mauritius</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Experience -->
+        <section id="experience" class="section container">
+            <h2 class="section-title">Experience</h2>
+
+            <!-- 1. Apprenticeship (Sanofi) - Current Position (Plus récente) -->
+            <div class="timeline-item">
+                <div class="timeline-date">Sept 2025 – Present</div>
+                <div class="timeline-details">
+                    <h3>Apprenticeship in Internal Global Communications</h3>
+                    <p>Sanofi, Paris</p>
+                    <ul>
+                        <li>Apprentice in internal global communication - production of the global newsletter Connecting the Dots.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 0. Internship Project Manager for NGO "Côte à Côte" -->
+            <div class="timeline-item">
+                <div class="timeline-date">June – Sept 2025</div>
+                <div class="timeline-details">
+                    <h3>Internship as Project Manager</h3>
+                    <p>NGO “Côte à Côte”, France</p>
+                    <ul>
+                        <li>Managed press relations, partnerships, and sponsorships.</li>
+                        <li>Coordinated external communication across social media and the website, and internal communication through the newsletter.</li>
+                        <li>Supported event planning and on-site coordination.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2. International Journalism Festival in Perugia (2025) -->
+            <div class="timeline-item">
+                <div class="timeline-date">April 2025</div>
+                <div class="timeline-details">
+                    <h3>Coverage of the International Journalism Festival </h3>
+                    <p>Perugia, Italy</p>
+                    <ul>
+                        <li>On-site coverage of the International Journalism Festival through interviews, reports, and video features.</li>
+                        <li>Curated and scheduled Instagram account (@assasperugia).</li>
+                        <li>Edited short-form videos and reels for social media platforms.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 3. Seller at Bookcourt (Mauritius) -->
+            <div class="timeline-item">
+                <div class="timeline-date">June – Aug 2024</div>
+                <div class="timeline-details">
+                    <h3>Seller at Bookcourt</h3>
+                    <p>Bookcourt, Mauritius</p>
+                    <ul>
+                        <li>Managed sales for a large editorial retail space.</li>
+                        <li>Delivered high-quality customer service and maintained team collaboration.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4. Intern at the United Nation Development Programme (Mauritius) -->
+            <div class="timeline-item">
+                <div class="timeline-date">July 2024</div>
+                <div class="timeline-details">
+                    <h3>Internship at the United Nation Development Programme (UNDP)</h3>
+                    <p>Port-Louis, Mauritius</p>
+                    <ul>
+                        <li>Attended meetings and technical discussions on the future of developing countries.</li>
+                        <li>Drafted diplomatic and neutral briefing notes and official documents.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 5. Internship at La Sentinelle Media, l’Express (Mauritius) -->
+            <div class="timeline-item">
+                <div class="timeline-date">2023</div>
+                <div class="timeline-details">
+                    <h3>Internship at La Sentinelle Media, l'Express</h3>
+                    <p>Port-Louis, Mauritius</p>
+                    <ul>
+                        <li>Conducted field reporting.</li>
+                        <li>Wrote and published news articles.</li>
+                        <li>Collaborated with the editorial team in daily newsroom operations.</li>
+                        <li>Carried out a student project on the relationship between media and politics</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 6. Intern at VIZAVI Publishing House (Mauritius) -->
+            <div class="timeline-item">
+                <div class="timeline-date">2018</div>
+                <div class="timeline-details">
+                    <h3>Internship at VIZAVI Publishing House</h3>
+                    <p>Éditions Vizavi, Mauritius</p>
+                    <ul>
+                        <li>Coordinated author relations and supported editorial outreach initiatives.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: My Editorial Portfolio -->
+        <section id="portfolio" class="section container">
+            <h2 class="section-title">My Editorial Portfolio</h2>
+            
+            <div class="portfolio-grid">
+                
+                <!-- Projet 0: Sanofi -->
+                <div class="project-card">
+                    <!-- Couleur B8735C et texte F5EFE6 pour correspondre à Master's Thesis -->
+                    <img src="sanofi.jpg" alt="Sanofi Connecting the Dots Newsletter" class="project-image">
+                    <div class="project-info">
+                        <h4>Sanofi - Internal Communications</h4>
+                        <p><strong>Connecting the Dots</strong> internal newsletter (2025-2026).</p>
+                    </div>
+                </div>
+
+                <!-- Projet 0.5: Association Côte à Côte -->
+                <div class="project-card accented">
+                    <!-- Couleur E6A478 et texte 333333 pour correspondre à Journalistic Profile -->
+                    <img src="CoteaCote.jpg" alt="Association Côte à Côte Project Management" class="project-image">
+                    <div class="project-info">
+                        <h4>Association Côte à Côte (2025)</h4>
+                        <ul>
+                            <li>Launched an online fundraising campaign on Ulule.</li>
+                            <li>Created and managed the association’s website.</li>
+                            <li>Drafted press releases and newsletters.</li>
+                            <li>Managed the association’s social media platforms.</li>
+                            <li>Designed event one-pagers and promotional materials.</li>
+                        </ul>
+                        <a href="https://www.coteacote2025.fr/" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Projet 1 : Master's Thesis -->
+                <div class="project-card">
+                    <img src="Spin.png" alt="Master's Thesis Cover" class="project-image">
+                    <div class="project-info">
+                        <h4>Master 1 Thesis (2025)</h4>
+                        <p>
+                            Title: <strong>Spin Doctors in the Digital Age: The Democratic Impact of Their New Digital Tools.</strong>
+                            <br>
+                            Thesis conducted as part of the Master’s in Global Journalism and Communication at Université Paris II Panthéon-Assas.
+                        </p>
+                        <a href="https://drive.google.com/file/d/1IYdruMtKwDKTjhAHJuRpbvRJtDcxYAn1/view" target="_blank">Read Abstract / Download PDF</a>
+                    </div>
+                </div>
+                
+                <!-- Projet 2 : Journalistic Profile (Perugia Festival) -->
+                <div class="project-card accented">
+                    <img src="Annette.png" alt="Journalism Festival Coverage" class="project-image">
+                    <div class="project-info">
+                        <h4>Journalistic Profile - Annette Young</h4>
+                        <p>Article: <strong>"In the Margins, She Found the Headlines"</strong>- Profile of journalist Annette Young, written following the Perugia International Journalism Festival.</p>
+                        <a href="https://medium.com/@assasperugia/in-the-margins-she-found-the-headlines-annette-youngs-storytelling-journey-a21cc07ad24e" target="_blank">Read the Article</a>
+                    </div>
+                </div>
+
+                <!-- International Journalism Festival (Général) -->
+                <div class="project-card">
+                    <!-- Couleur B8735C et texte F5EFE6 pour correspondre à Master's Thesis -->
+                    <img src="Assas.png" alt="International Journalism Festival Coverage" class="project-image">
+                    <div class="project-info">
+                        <h4>International Journalism Festival in Perugia (April 2025)</h4>
+                        <p>
+                            On-site coverage of the International Journalism Festival through interviews, reports, and video features.
+                            <br>
+                            Led the artistic direction of a dedicated Instagram account.
+                        </p>
+                        <!-- Lien vers le compte Instagram dédié -->
+                        <a href="https://www.instagram.com/assasperugia" target="_blank">Visit Instagram Account (@assasperugia)</a>
+                    </div>
+                </div>
+                
+                <!-- Projet 3 : Student Project "The Press: A Fourth Power?" -->
+                <div class="project-card accented">
+                     <!-- Couleur E6A478 pour correspondre à Journalistic Profile -->
+                    <img src="PPEI.png" alt="Student Project Document" class="project-image">
+                    <div class="project-info">
+                        <h4>Student Project (2024)</h4>
+                        <p>Analytical report on the relationship between media, public opinion, and the political sphere. (Title: <strong>"The Mauritian Press: A Fourth Power?"</strong>).</p>
+                        <a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2I... " target="_blank">See the Document (PDF)</a>
+                    </div>
+                </div>
+
+                
+                <!-- Articles de Presse La Sentinelle Media - COULEUR CHANGÉE EN TERRE CUITE -->
+                <div class="project-card">
+                    <!-- Utilisation de la couleur B8735C et F5EFE6 pour correspondre à Master's Thesis -->
+                    <img src="Express.jpg" alt="La Sentinelle Media Press Articles" class="project-image">
+                    <div class="project-info">
+                        <h4>Press Articles - La Sentinelle Media, l’Express (2023)</h4>
+                        <p>Wrote multiple news articles.</p>
+                        <div class="article-buttons">
+                            <!-- Bouton 1 -->
+                            <a href="https://lexpress.mu/s/article/424906/trajet-maurice-rodrigues-deux-ans-plus-tard-trochetia-nouveau-vent-en-poupe" target="_blank">
+                                Trajet Maurice-Rodrigues, deux ans plus tard : le Trochetia a de nouveau le vent en poupe
+                            </a>
+                            <!-- Bouton 2 -->
+                            <a href="https://lexpress.mu/s/article/424920/ecosysteme-nephile-doree-file-un-bon-coton" target="_blank">
+                                Écosystème : la néphile dorée file un bon coton
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet 6 : Visual Storytelling -> OTHER EXPERIENCES (RENOMMÉ et CONTENU ÉTENDU) -->
+                <div class="project-card accented">
+                    <img src="Others.png" alt="Visual Storytelling and other experiences" class="project-image">
+                    <div class="project-info">
+                        <h4>Other Experiences</h4>
+                        <ul>
+                            <li>Created Instagram content, edited reels, and developed visual storytelling materials.</li>
+                            <li>Drafted diplomatic and neutral communications for the United Nations Development Programme (UNDP).</li>
+                            <li>Managed an editorial retail space (Bookcourt, Éditions Vizavi).</li>
+                            <li>Volunteered on gender-based violence awareness initiatives (CCFT Terre Solidaire).</li>
+                        </ul>
+                        <!-- Retrait du bouton de lien car le contenu est diversifié -->
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- Section: Core Skills & Interests -->
+        <section id="skills" class="section container">
+            <h2 class="section-title">Core Skills & Interests</h2>
+            
+            <div class="skills-container">
+
+                <div class="skills-category">
+                    <h4>Core Skills</h4>
+                    <ul>
+                        <li>Adaptable and versatile communicator, effective both independently and in team environments</li>
+                        <li>Creative and curious, with a strong sense of storytelling and audience engagement</li>
+                        <li>Organised, results-driven, with an eye for clarity and impact in content production</li>
+                        <li>Proficient in Microsoft Office, Canva, Adobe Creative Suite</li>
+                        <li>Experienced with WordPress, basic HTML/CSS</li>
+                        <li>Familiar with AI tools (ChatGPT, Claude, DeepSeek) for content and research support</li>
+                    </ul>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Languages</h4>
+                    <ul>
+                        <li>French: Native</li>
+                        <li>English: C1</li>
+                        <li>Spanish: B1</li>
+                    </ul>
+                </div>
+
+                <div class="skills-category">
+                    <h4>Interests & Activities</h4>
+                    <ul>
+                        <li>Volunteering on gender equality and social awareness initiatives (CCFT Terre Solidaire).</li>
+                        <li>Reading on global affairs and contemporary issues.</li>
+                        <li>Creative pursuits enhancing visual storytelling skills.</li>
+                        <li>Keen follower of current events and political communication trends.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="footer">
+        &copy; 2025 Alizée Labonne - Digital Editorial Portfolio
+    </footer>
+
+</body>
+</html>
